@@ -2,9 +2,9 @@
 
 ## 📋 Project Information
 
-**Student Name:** [Your Name]  
-**GitHub Username:** [Your Username]  
-**Repository URL:** [This Repository]  
+**Student Name:** Nathan Wang 
+**GitHub Username:** nathanwang26
+**Repository URL:** https://github.com/wang-nathan/sierracanyon-attendance
 **Deployed URL:** [To be added after deployment]
 
 ---
@@ -12,48 +12,51 @@
 ## 🎯 Project Overview
 
 ### Project Title
-[Provide a clear, descriptive title for your React application]
+Sierra Canyon Attendance
 
 ### Project Description
-[Describe your application in 2-3 paragraphs. What problem does it solve? Who is the target user? What makes it unique or valuable?]
+This web-based attendance application streamlines the logistics of handling faculty attendance at an educational institution. It modernizes faculty absence management and the coordination of substitutes at Sierra Canyon. React is used as the frontend for the application, and a Google Sheets backend database is utilized. The application addresses disorganized communication by replacing constant manual back-and-forth via email and inconsistent spreadsheet formatting. It is an automated system that tracks covered and assigned periods, as well as substitute assignments. Target users are school administrators, HR, and faculty members; they need a secure and effective way to manage and record daily schedule changes.
+
+This application is unique because it heavily emphasizes automation and security. I will utilize Microsoft Azure Identity and Access Management (IAM) for authentication. The system processes absence requests and also automates the assignment of eligible faculty to cover unassigned periods. It sends absence and claim notices via email.
+
+For administrators, the platform makes this challenging and decentralized task into a manageable process. It provides oversight tools for HR and financial purposes. It allows administrators and department chairs to "force-assign" substitutes when necessary and send mass emails to request coverage to all faculty if needed. This approach reduces chaos in the search for a substitute and provides valuable information for institutional records.
 
 ### Motivation
-[Why did you choose this project? What interests you about it? How does it connect to your personal interests or career goals?]
+I chose this project because I noticed the need for many Sierra Canyon faculty to have a system that they can rely on to request, claim, assign, and email faculty efficiently without having to worry about handling the backend of an application. Many staff have come up to me and agreed that this application will help organize their workflow. This application is a solution to the constant struggle for department chairs and HR to see an automated and up-to-date report of substitutes without having to add them to a database manually. I am planning to major in Computer Science and Artificial Intelligence, and I am interested in how CS and AI can impact businesses and society in the modern world. I want to develop an application and learn about frontend-backend communication in an application. I wish to develop an application and utilize technology to impact the future.
 
 ---
 
 ## 🛠️ Technical Specifications
 
 ### Core Features
-- [ ] **Feature 1:** [Description]
-- [ ] **Feature 2:** [Description]
-- [ ] **Feature 3:** [Description]
-- [ ] **Feature 4:** [Description]
-- [ ] **Feature 5:** [Description]
-- [ ] **Feature 6:** [Description]
+- [ ] **Feature 1:** Report an Absence: This screen displays an option to report an absence at least 48 hours in advance prior to the date of the coverage. Include dropdowns for the Reason for Absence (Sick/Personal Day), Date (mm/dd/yyyy), and Class Periods that are being covered. For each class period, allow an option to upload associated files, linking to Google Drive storage, and descriptions for each class period. If the class period is lunch duty, require "Truck" or "Cafeteria" to be inputted into the field, and remove any file upload option. After the user presses "Submit Report," an email to available faculty will be sent.
+- [ ] **Feature 2:** Claim a Period: This screen will display periods that administrators approve to be shown to any faculty viewing the application. It allows faculty to claim a period that requires coverage, only if the administrator or department chair clicks a release to all faculty button in the administrator panel.
+- [ ] **Feature 3:** Periods Claimed By Me: This screen displays the information, files, and description associated with each claimed period for the faculty member who is signed in. It will allow the faculty to cancel a claimed period, only if the cancellation occurs 48 hours prior to the date of the coverage.
+- [ ] **Feature 4:** Settings: This screen displays the option to input a country code and phone number, validating the phone number associated with the country code that is specified by the user. Create two toggle switches to enable/disable push notifications via phone or email for general faculty absence reports by other faculty (this toggle will be overridden if any administrator forces an email to be sent out).
+- [ ] **Feature 5:** Administrator Panel: This panel sorts faculty absence reports by the department, based on the department of the currently logged-in department chair or administrator. Only administrators are allowed to this admin page. It displays a list of all of the reports in the future and has a "Manage Report" button for each report.
+- [ ] **Feature 6:** Absence Report Description (Administrator End): This screen displays the description of the absence reports. It includes faculty that are available for this specified absence report, and it is sortable by department (it is set to the department of the faculty member who requested this absence by default). There are four buttons: "Force Assign Selected Faculty" (forcefully assign a faculty to this absence report, not giving the faculty selected a choice), "Email Request to Selected Faculty" (send an email to request a faculty member to cover this period), "Send Email to School for All Unassigned Periods" (this releases all of the periods associated with the absence report for this faculty member to the "Claim a Period" screen), and "Disable Release to All Faculty" (removes the associated periods for this faculty member from the "Claim a Period" screen).
 
 ### Technology Stack
 
 | Category | Technology/Library |
 |----------|-------------------|
-| **Frontend Framework** | React 18.x |
-| **UI Library** | [e.g., Material-UI, Chakra UI, Tailwind CSS] |
-| **State Management** | [e.g., Context API, Redux, Zustand] |
-| **APIs/Backend** | [e.g., REST API, Firebase, Supabase] |
-| **Routing** | [e.g., React Router] |
-| **HTTP Client** | [e.g., Axios, Fetch API] |
-| **Additional Libraries** | [e.g., date-fns, chart.js, etc.] |
+| **Frontend Framework** | React 18.2 |
+| **UI Library** | Custom CSS (no UI framework); styling in an App.css file |
+| **State Management** | React local state/hooks (useState and useEffect) |
+| **APIs/Backend** | Google Apps Script + Google Sheets/Google Drive (env vars) |
+| **Routing** | React Router (BrowserRouter / Routes) |
+| **HTTP Client** | Fetch API; Axios |
+| **Additional Libraries** | XLSX helper; Jest + Testing Library tests; webpack/dotenv |
 
 ### User Interface Design
-[Describe the main pages/views of your application and their purpose. Include wireframes or sketches if available.]
 
 **Main Views:**
-1. [View Name] - [Purpose]
-2. [View Name] - [Purpose]
-3. [View Name] - [Purpose]
+1. Faculty Member - Allow faculty members to claim, cancel, create, or get information about faculty absence reports. They are able to easily access reports that they have claimed and report an absence, so that other faculty members can cover for their class period. They have access to the Report an Absence, Claim a Period, Periods Claimed by Me, and Settings panels described above.
+2. Administrator/Department Chair - Administrators and department chairs have the ability to access the panels available to Faculty Members, as well as an additional Administrator Panel screen to manage all faculty reports, sorted by department, releasing requested periods to all faculty, force-assigning faculty, emailing faculty, and disabling requested periods from all faculty.
+3. HR and Financial Personnel - HR and Financial Personnel have view access to the backend Google Sheets database with all of the absences that have been reported. This will simplify income reporting and automate the process of absence management and record-keeping.
 
 ### Data Management
-[Explain how your application will handle data. What data needs to be stored? Will you use local storage, a database, or external APIs?]
+The application stores attendance/absence reports (faculty name/email, date, reason, periods, and the claim state) and uploaded lesson-plan files and descriptions to Google services. Rows are written to Google Sheets via Google Apps Script endpoints. Files are uploaded to Google Drive using an Apps Script upload endpoint. Email notifications are sent through Apps Script mail endpoints. The faculty roster and configuration are fetched at runtime from a published XLSX (on Google Sheets) and parsed on the client-side. The frontend only handles the UI state in React and does not use localStorage or an on-device database. Environment endpoints GOOGLE_SCRIPT_URL, GOOGLE_UPLOAD_URL, and XLSX_LINK are connected to the client.
 
 ---
 
