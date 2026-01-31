@@ -73,40 +73,40 @@ The application stores attendance/absence reports (faculty name/email, date, rea
 ## 📅 Project Timeline & Milestones
 
 ### Milestone 1: Project Setup ✅
-**Target Date:** [Date]
+**Target Date:** [Completed Project in September 2025]
 
 **Deliverables:**
-- [x] Initialize React project
-- [x] Set up GitHub repository
-- [x] Configure GitHub Copilot
-- [x] Create basic project structure
+- [X] Initialize React project
+- [X] Set up GitHub repository
+- [X] Configure GitHub Copilot
+- [X] Create basic project structure
 
 ---
 
 ### Milestone 2: Core Features 🚧
-**Target Date:** [Date]
+**Target Date:** [Completed Project in September 2025]
 
 **Deliverables:**
-- [ ] [Specific feature to implement]
-- [ ] [Specific feature to implement]
-- [ ] [Specific feature to implement]
-- [ ] [Specific feature to implement]
+- [X] Welcome, Credits Screen, Login, Settings, and Other Minor Screens
+- [X] Faculty Member Screen - Claim, Cancel, Create, Information about Faculty Absence Reports
+- [X] Administrator/Department Chair Screen - Management of Faculty Absence Reports and Emails
+- [X] HR and Financial Personnel - Backend and Database Development
 
 ---
 
 ### Milestone 3: UI/UX Polish 📋
-**Target Date:** [Date]
+**Target Date:** [Completed Project in September 2025]
 
 **Deliverables:**
-- [ ] [UI improvement task]
-- [ ] [Styling task]
-- [ ] [Responsive design implementation]
+- [X] Improve glassmorphism inside user interface
+- [X] Style application to be Sierra Canyon themed dark blue/navy with animations
+- [X] Added loading prompts to display screens allowing user to know the reason for a potential slow load time
 - [ ] [Accessibility improvements]
 
 ---
 
 ### Milestone 4: Testing & Deployment 🚀
-**Target Date:** [Date]
+**Target Date:** [Completed Project in September 2025]
 
 **Deliverables:**
 - [ ] Write and run tests
