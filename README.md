@@ -100,8 +100,8 @@ The application stores attendance/absence reports (faculty name/email, date, rea
 **Deliverables:**
 - [X] Improve glassmorphism inside user interface
 - [X] Style application to be Sierra Canyon themed dark blue/navy with animations
-- [X] Added loading prompts to display screens allowing user to know the reason for a potential slow load time
-- [ ] [Accessibility improvements]
+- [X] Added loading prompts to display screens, allowing user to know the reason for a potential slow load time
+- [X] Applied high-contrast text shadows (App.css) ad descriptive alt attributes for images.
 
 ---
 
@@ -109,61 +109,20 @@ The application stores attendance/absence reports (faculty name/email, date, rea
 **Target Date:** [Completed Project in September 2025]
 
 **Deliverables:**
-- [ ] Write and run tests
-- [ ] Fix bugs and optimize performance
-- [ ] Deploy to hosting platform
-- [ ] Prepare final presentation
+- [X] Wrote Jest and React Testing Library integration tests for claiming and canceling workflows.
+- [X] Implemented Promise.all for concurrent fetching and corrected API action naming mismatches (ClaimPeriod.js).
+- [X] Configured process.env variables to manage environment-specific backend endpoints.
+- [X] Prepare final presentation - Presented in front of Mr. DeVaughn-Brown, Mr. Staude, and Mr. Evjen.
 
 ---
 
 ## ✅ Success Criteria
 
-- [ ] All core features are functional
+- [X] All core features are functional
 - [ ] Application is deployed and accessible online
-- [ ] Code is well-documented with clear comments
-- [ ] [Additional criterion]
-- [ ] [Additional criterion]
-
----
-
-## 🚀 Getting Started
-
-### Prerequisites
-```bash
-Node.js (v16 or higher)
-npm or yarn
-Git
-```
-
-### Installation
-
-1. Clone the repository
-```bash
-git clone [your-repo-url]
-cd [your-project-name]
-```
-
-2. Install dependencies
-```bash
-npm install
-# or
-yarn install
-```
-
-3. Set up environment variables
-```bash
-touch .env
-# Edit .env with your configuration
-```
-
-4. Start the development server
-```bash
-npm start
-# or
-yarn start
-```
-
-5. Open [http://localhost:3000](http://localhost:3000) in your browser
+- [X] Code is well-documented with clear comments
+- [X] README.md is detailed and thorough
+- [X] Application directory nicely organized
 
 ---
 
@@ -171,32 +130,55 @@ yarn start
 
 ```
 project-root/
-├── public/
-│   ├── index.html
-│   └── assets/
-├── src/
-│   ├── components/
-│   │   ├── [Component1]/
-│   │   ├── [Component2]/
-│   │   └── ...
-│   ├── pages/
-│   │   ├── [Page1].jsx
-│   │   └── [Page2].jsx
-│   ├── hooks/
-│   ├── context/
-│   ├── services/
-│   ├── utils/
-│   ├── App.jsx
-│   └── index.js
+├── .babelrc
+├── .env
+├── jest.config.js
 ├── package.json
-└── README.md
+├── README.md
+├── webpack.config.js
+├── public/
+│   └── index.html
+├── resources/
+│   └── ...
+├── src/
+│   ├── AccessInfo.js
+│   ├── AdminPanel.js
+│   ├── App.css
+│   ├── App.js
+│   ├── ClaimedByMe.js
+│   ├── ClaimedByMe.test.js
+│   ├── ClaimLink.js
+│   ├── ClaimPeriod.js
+│   ├── ClaimPeriod.test.js
+│   ├── index.css
+│   ├── index.js
+│   ├── MainMenu.js
+│   ├── Modal.js
+│   ├── NextWindow.js
+│   ├── NextWindow.test.js
+│   ├── ParticleCanvas.js
+│   ├── ReportAbsence.js
+│   ├── ReportAbsence.test.js
+│   ├── Settings.js
+│   └── utils/
+│       ├── buttonArrows.js
+│       ├── buttonLights.js
+│       ├── date.js
+│       ├── faculty.js
+│       ├── fetch.js
+│       ├── period.js
+│       ├── settings.js
+│       ├── xlsx.js
+│       └── ...
+└── tools/
+    └── insert-jsdoc.js
 ```
 
 ---
 
 ## 🧪 Testing
 
-[Describe your testing approach]
+Unit + integration tests use Jest with React Testing Library. Tests mock network calls and the XLSX helper functions; configuration is in jest.config.js, and test scripts are in package.json.
 
 ```bash
 # Run tests
@@ -204,6 +186,9 @@ npm test
 
 # Run tests with coverage
 npm test -- --coverage
+
+# Run tests in watch mode
+npm test -- --watchAll
 ```
 
 ---
@@ -218,31 +203,26 @@ npm test -- --coverage
 
 ---
 
-## 📸 Screenshots
+## 📸 Video Demo
 
-[Add screenshots of your application once developed]
-
-### Home Page
-![Home Page](./screenshots/home.png)
-
-### [Feature Name]
-![Feature](./screenshots/feature.png)
+Full-Length Video: https://youtu.be/IwVt9URoGRQ
+Rapid Demo Video: https://youtu.be/df1khpN26p0
 
 ---
 
 ## 🎓 Reflections & Learnings
 
 ### What I Learned
-[Reflect on what you learned throughout this project]
+I learned how to integrate an npm application with Google Apps Script and Sheets APIs. I included a robust XLSX parsing system and added row handling inside of fetchAndParseXLSX. I normalized and handled class periods and time logic using parsePeriods and UTC date checks in date.js. I polished UI and UX with button effects. I also added app routing and auth flow in App.js.
 
 ### Challenges Faced
-[Discuss significant challenges and how you overcame them]
+Parsing XLSX reliably with sheet indexing was difficult and required my own research into connecting Google Sheets with an app. I fixed this using iterative parsing in fetchAndParseXLSX. I handled timezone and date edge cases, which required thoughtful consideration for advance/cancellation windows using UTC-normalized checks. I created file uploads and connected them to form submission using an Apps Script endpoint, and I ensured CORS and format correctness in ReportAbsence.js. The CORS header took me a while to fix, but I did more research on Google and found a solution.
 
 ### GitHub Copilot Experience
-[Discuss how GitHub Copilot helped or hindered your development process. Provide specific examples.]
+GitHub Copilot accelerated documentation and assisted in bug-fixing with CORS headers and parsing XLSX. It also helped me build my ideal UI from a long prompt I provided with a detailed description of each screen. I included follow-up discussions after each long prompt to improve each part and screen specifically. I verified that the generated suggestions match real endpoints and were not made up. I saved time on developing the boilerplate for the app, but it still required my manual (human) review for accuracy.
 
 ### Future Improvements
-[What would you do differently or add if you had more time?]
+I would add more unit and integration tests for XLSX parsing and claiming periods. I will extract common network and email logic into a service and add retry buttons and error notices (or potential reasons why things error) for the user. I can integrate the application with Microsoft Calendar directly in the future. I will also create a virtual phone number to send SMS notifications to users. I can also add different theming options for the users to customize the application.
 
 ---
 
@@ -250,8 +230,9 @@ npm test -- --coverage
 
 - [React Documentation](https://react.dev)
 - [GitHub Copilot Documentation](https://docs.github.com/copilot)
-- [Other resource]
-- [Other resource]
+- [Webpack Docs](https://webpack.js.org)
+- [Jest Docs](https://jestjs.io)
+- [Google Apps Script](https://developers.google.com/apps-script)
 
 ---
 
@@ -392,32 +373,6 @@ npm test -- --coverage
 5. Challenges faced and how you overcame them
 6. What you learned and future improvements
 
----
-
-# 💡 Tips for Success
-
-## GitHub Best Practices
-- ✅ Commit regularly with clear, descriptive messages
-- ✅ Use branches for new features
-- ✅ Write a comprehensive README with setup instructions
-- ✅ Include a .gitignore file to exclude node_modules and sensitive data
-- ✅ Use meaningful branch names (feature/user-auth, bugfix/login-error)
-
-## Working with GitHub Copilot
-- ✅ Always review and understand suggested code before accepting
-- ✅ Use comments to guide Copilot toward desired solutions
-- ✅ Test all code thoroughly, especially AI-generated suggestions
-- ✅ Modify suggestions to match your project's style and needs
-- ✅ Document interesting or non-obvious code sections
-- ⚠️ Don't blindly accept suggestions - understand what the code does
-- ⚠️ Be aware of potential security issues in generated code
-
-## Time Management
-- ⏰ Start early and work consistently
-- ⏰ Build incrementally - get one feature working before moving to the next
-- ⏰ Test frequently to catch issues early
-- ⏰ Leave time for polish and deployment
-- ⏰ Ask for help when stuck - don't wait until the last minute
 
 ## Code Quality
 - 📝 Write clean, readable code
@@ -426,48 +381,3 @@ npm test -- --coverage
 - 📝 Extract reusable logic into custom hooks
 - 📝 Handle errors gracefully
 - 📝 Add loading states for async operations
-
----
-
-# 🔗 Helpful Resources
-
-## React
-- [React Official Documentation](https://react.dev)
-- [React Hooks Documentation](https://react.dev/reference/react)
-- [React Router Documentation](https://reactrouter.com)
-
-## GitHub Copilot
-- [GitHub Copilot Documentation](https://docs.github.com/copilot)
-- [Getting Started with Copilot](https://docs.github.com/copilot/getting-started-with-github-copilot)
-
-## Deployment Platforms
-- [Vercel](https://vercel.com)
-- [Netlify](https://netlify.com)
-- [GitHub Pages](https://pages.github.com)
-- [Render](https://render.com)
-
-## UI Libraries & Styling
-- [Tailwind CSS](https://tailwindcss.com)
-- [Material-UI](https://mui.com)
-- [Chakra UI](https://chakra-ui.com)
-- [React Bootstrap](https://react-bootstrap.github.io)
-
-## Additional Tools
-- [Axios](https://axios-http.com) - HTTP client
-- [React Query](https://tanstack.com/query) - Data fetching
-- [Zustand](https://zustand-demo.pmnd.rs) - State management
-- [React Hook Form](https://react-hook-form.com) - Form handling
-
----
-
-## 📞 Getting Help
-
-If you encounter issues:
-1. Check the documentation for the library/tool you're using
-2. Search Stack Overflow for similar problems
-3. Ask GitHub Copilot for suggestions (but verify the code!)
-4. Discuss with classmates (collaboration is encouraged!)
-
----
-
-**Good luck with your project! 🚀**
