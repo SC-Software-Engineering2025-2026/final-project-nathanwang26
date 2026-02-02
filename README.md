@@ -70,7 +70,7 @@ The application stores attendance/absence reports (faculty name/email, date, rea
 
 ---
 
-## 📅 Project Timeline & Milestones
+## 📅 Project Timeline & Milestones [__I am told that I have finished the final project due to special circumstances.__]
 
 ### Milestone 1: Project Setup ✅
 **Target Date:** [Completed Project in September 2025]
