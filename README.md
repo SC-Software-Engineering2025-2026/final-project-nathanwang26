@@ -2,9 +2,9 @@
 
 ## 📋 Project Information
 
-**Student Name:** [Your Name]  
-**GitHub Username:** [Your Username]  
-**Repository URL:** [This Repository]  
+**Student Name:** Nathan Wang 
+**GitHub Username:** nathanwang26
+**Repository URL:** https://github.com/wang-nathan/sierracanyon-attendance
 **Deployed URL:** [To be added after deployment]
 
 ---
@@ -12,48 +12,51 @@
 ## 🎯 Project Overview
 
 ### Project Title
-[Provide a clear, descriptive title for your React application]
+Sierra Canyon Attendance
 
 ### Project Description
-[Describe your application in 2-3 paragraphs. What problem does it solve? Who is the target user? What makes it unique or valuable?]
+This web-based attendance application streamlines the logistics of handling faculty attendance at an educational institution. It modernizes faculty absence management and the coordination of substitutes at Sierra Canyon. React is used as the frontend for the application, and a Google Sheets backend database is utilized. The application addresses disorganized communication by replacing constant manual back-and-forth via email and inconsistent spreadsheet formatting. It is an automated system that tracks covered and assigned periods, as well as substitute assignments. Target users are school administrators, HR, and faculty members; they need a secure and effective way to manage and record daily schedule changes.
+
+This application is unique because it heavily emphasizes automation and security. I will utilize Microsoft Azure Identity and Access Management (IAM) for authentication. The system processes absence requests and also automates the assignment of eligible faculty to cover unassigned periods. It sends absence and claim notices via email.
+
+For administrators, the platform makes this challenging and decentralized task into a manageable process. It provides oversight tools for HR and financial purposes. It allows administrators and department chairs to "force-assign" substitutes when necessary and send mass emails to request coverage to all faculty if needed. This approach reduces chaos in the search for a substitute and provides valuable information for institutional records.
 
 ### Motivation
-[Why did you choose this project? What interests you about it? How does it connect to your personal interests or career goals?]
+I chose this project because I noticed the need for many Sierra Canyon faculty to have a system that they can rely on to request, claim, assign, and email faculty efficiently without having to worry about handling the backend of an application. Many staff have come up to me and agreed that this application will help organize their workflow. This application is a solution to the constant struggle for department chairs and HR to see an automated and up-to-date report of substitutes without having to add them to a database manually. I am planning to major in Computer Science and Artificial Intelligence, and I am interested in how CS and AI can impact businesses and society in the modern world. I want to develop an application and learn about frontend-backend communication in an application. I wish to develop an application and utilize technology to impact the future.
 
 ---
 
 ## 🛠️ Technical Specifications
 
 ### Core Features
-- [ ] **Feature 1:** [Description]
-- [ ] **Feature 2:** [Description]
-- [ ] **Feature 3:** [Description]
-- [ ] **Feature 4:** [Description]
-- [ ] **Feature 5:** [Description]
-- [ ] **Feature 6:** [Description]
+- [ ] **Feature 1:** Report an Absence: This screen displays an option to report an absence at least 48 hours in advance prior to the date of the coverage. Include dropdowns for the Reason for Absence (Sick/Personal Day), Date (mm/dd/yyyy), and Class Periods that are being covered. For each class period, allow an option to upload associated files, linking to Google Drive storage, and descriptions for each class period. If the class period is lunch duty, require "Truck" or "Cafeteria" to be inputted into the field, and remove any file upload option. After the user presses "Submit Report," an email to available faculty will be sent.
+- [ ] **Feature 2:** Claim a Period: This screen will display periods that administrators approve to be shown to any faculty viewing the application. It allows faculty to claim a period that requires coverage, only if the administrator or department chair clicks a release to all faculty button in the administrator panel.
+- [ ] **Feature 3:** Periods Claimed By Me: This screen displays the information, files, and description associated with each claimed period for the faculty member who is signed in. It will allow the faculty to cancel a claimed period, only if the cancellation occurs 48 hours prior to the date of the coverage.
+- [ ] **Feature 4:** Settings: This screen displays the option to input a country code and phone number, validating the phone number associated with the country code that is specified by the user. Create two toggle switches to enable/disable push notifications via phone or email for general faculty absence reports by other faculty (this toggle will be overridden if any administrator forces an email to be sent out).
+- [ ] **Feature 5:** Administrator Panel: This panel sorts faculty absence reports by the department, based on the department of the currently logged-in department chair or administrator. Only administrators are allowed to this admin page. It displays a list of all of the reports in the future and has a "Manage Report" button for each report.
+- [ ] **Feature 6:** Absence Report Description (Administrator End): This screen displays the description of the absence reports. It includes faculty that are available for this specified absence report, and it is sortable by department (it is set to the department of the faculty member who requested this absence by default). There are four buttons: "Force Assign Selected Faculty" (forcefully assign a faculty to this absence report, not giving the faculty selected a choice), "Email Request to Selected Faculty" (send an email to request a faculty member to cover this period), "Send Email to School for All Unassigned Periods" (this releases all of the periods associated with the absence report for this faculty member to the "Claim a Period" screen), and "Disable Release to All Faculty" (removes the associated periods for this faculty member from the "Claim a Period" screen).
 
 ### Technology Stack
 
 | Category | Technology/Library |
 |----------|-------------------|
-| **Frontend Framework** | React 18.x |
-| **UI Library** | [e.g., Material-UI, Chakra UI, Tailwind CSS] |
-| **State Management** | [e.g., Context API, Redux, Zustand] |
-| **APIs/Backend** | [e.g., REST API, Firebase, Supabase] |
-| **Routing** | [e.g., React Router] |
-| **HTTP Client** | [e.g., Axios, Fetch API] |
-| **Additional Libraries** | [e.g., date-fns, chart.js, etc.] |
+| **Frontend Framework** | React 18.2 |
+| **UI Library** | Custom CSS (no UI framework); styling in an App.css file |
+| **State Management** | React local state/hooks (useState and useEffect) |
+| **APIs/Backend** | Google Apps Script + Google Sheets/Google Drive (env vars) |
+| **Routing** | React Router (BrowserRouter / Routes) |
+| **HTTP Client** | Fetch API; Axios |
+| **Additional Libraries** | XLSX helper; Jest + Testing Library tests; webpack/dotenv |
 
 ### User Interface Design
-[Describe the main pages/views of your application and their purpose. Include wireframes or sketches if available.]
 
 **Main Views:**
-1. [View Name] - [Purpose]
-2. [View Name] - [Purpose]
-3. [View Name] - [Purpose]
+1. Faculty Member - Allow faculty members to claim, cancel, create, or get information about faculty absence reports. They are able to easily access reports that they have claimed and report an absence, so that other faculty members can cover for their class period. They have access to the Report an Absence, Claim a Period, Periods Claimed by Me, and Settings panels described above.
+2. Administrator/Department Chair - Administrators and department chairs have the ability to access the panels available to Faculty Members, as well as an additional Administrator Panel screen to manage all faculty reports, sorted by department, releasing requested periods to all faculty, force-assigning faculty, emailing faculty, and disabling requested periods from all faculty.
+3. HR and Financial Personnel - HR and Financial Personnel have view access to the backend Google Sheets database with all of the absences that have been reported. This will simplify income reporting and automate the process of absence management and record-keeping.
 
 ### Data Management
-[Explain how your application will handle data. What data needs to be stored? Will you use local storage, a database, or external APIs?]
+The application stores attendance/absence reports (faculty name/email, date, reason, periods, and the claim state) and uploaded lesson-plan files and descriptions to Google services. Rows are written to Google Sheets via Google Apps Script endpoints. Files are uploaded to Google Drive using an Apps Script upload endpoint. Email notifications are sent through Apps Script mail endpoints. The faculty roster and configuration are fetched at runtime from a published XLSX (on Google Sheets) and parsed on the client-side. The frontend only handles the UI state in React and does not use localStorage or an on-device database. Environment endpoints GOOGLE_SCRIPT_URL, GOOGLE_UPLOAD_URL, and XLSX_LINK are connected to the client.
 
 ---
 
@@ -67,100 +70,59 @@
 
 ---
 
-## 📅 Project Timeline & Milestones
+## 📅 Project Timeline & Milestones [__I am told that I have finished the final project due to special circumstances.__]
 
 ### Milestone 1: Project Setup ✅
-**Target Date:** [Date]
+**Target Date:** [Completed Project in September 2025]
 
 **Deliverables:**
-- [x] Initialize React project
-- [x] Set up GitHub repository
-- [x] Configure GitHub Copilot
-- [x] Create basic project structure
+- [X] Initialize React project
+- [X] Set up GitHub repository
+- [X] Configure GitHub Copilot
+- [X] Create basic project structure
 
 ---
 
 ### Milestone 2: Core Features 🚧
-**Target Date:** [Date]
+**Target Date:** [Completed Project in September 2025]
 
 **Deliverables:**
-- [ ] [Specific feature to implement]
-- [ ] [Specific feature to implement]
-- [ ] [Specific feature to implement]
-- [ ] [Specific feature to implement]
+- [X] Welcome, Credits Screen, Login, Settings, and Other Minor Screens
+- [X] Faculty Member Screen - Claim, Cancel, Create, Information about Faculty Absence Reports
+- [X] Administrator/Department Chair Screen - Management of Faculty Absence Reports and Emails
+- [X] HR and Financial Personnel - Backend and Database Development
 
 ---
 
 ### Milestone 3: UI/UX Polish 📋
-**Target Date:** [Date]
+**Target Date:** [Completed Project in September 2025]
 
 **Deliverables:**
-- [ ] [UI improvement task]
-- [ ] [Styling task]
-- [ ] [Responsive design implementation]
-- [ ] [Accessibility improvements]
+- [X] Improve glassmorphism inside user interface
+- [X] Style application to be Sierra Canyon themed dark blue/navy with animations
+- [X] Added loading prompts to display screens, allowing user to know the reason for a potential slow load time
+- [X] Applied high-contrast text shadows (App.css) ad descriptive alt attributes for images.
 
 ---
 
 ### Milestone 4: Testing & Deployment 🚀
-**Target Date:** [Date]
+**Target Date:** [Completed Project in September 2025]
 
 **Deliverables:**
-- [ ] Write and run tests
-- [ ] Fix bugs and optimize performance
-- [ ] Deploy to hosting platform
-- [ ] Prepare final presentation
+- [X] Wrote Jest and React Testing Library integration tests for claiming and canceling workflows.
+- [X] Implemented Promise.all for concurrent fetching and corrected API action naming mismatches (ClaimPeriod.js).
+- [X] Configured process.env variables to manage environment-specific backend endpoints.
+- [X] Prepare final presentation - Presented in front of Mr. DeVaughn-Brown, Mr. Staude, and Mr. Evjen.
 
 ---
 
 ## ✅ Success Criteria
 
-- [ ] All core features are functional
+- [X] All core features are functional
 - [ ] Application is deployed and accessible online
-- [ ] Code is well-documented with clear comments
-- [ ] [Additional criterion]
-- [ ] [Additional criterion]
-
----
-
-## 🚀 Getting Started
-
-### Prerequisites
-```bash
-Node.js (v16 or higher)
-npm or yarn
-Git
-```
-
-### Installation
-
-1. Clone the repository
-```bash
-git clone [your-repo-url]
-cd [your-project-name]
-```
-
-2. Install dependencies
-```bash
-npm install
-# or
-yarn install
-```
-
-3. Set up environment variables
-```bash
-touch .env
-# Edit .env with your configuration
-```
-
-4. Start the development server
-```bash
-npm start
-# or
-yarn start
-```
-
-5. Open [http://localhost:3000](http://localhost:3000) in your browser
+- [X] Code is well-documented with clear comments
+- [X] README.md is detailed and thorough
+- [X] Application directory nicely organized
 
 ---
 
@@ -168,32 +130,55 @@ yarn start
 
 ```
 project-root/
-├── public/
-│   ├── index.html
-│   └── assets/
-├── src/
-│   ├── components/
-│   │   ├── [Component1]/
-│   │   ├── [Component2]/
-│   │   └── ...
-│   ├── pages/
-│   │   ├── [Page1].jsx
-│   │   └── [Page2].jsx
-│   ├── hooks/
-│   ├── context/
-│   ├── services/
-│   ├── utils/
-│   ├── App.jsx
-│   └── index.js
+├── .babelrc
+├── .env
+├── jest.config.js
 ├── package.json
-└── README.md
+├── README.md
+├── webpack.config.js
+├── public/
+│   └── index.html
+├── resources/
+│   └── ...
+├── src/
+│   ├── AccessInfo.js
+│   ├── AdminPanel.js
+│   ├── App.css
+│   ├── App.js
+│   ├── ClaimedByMe.js
+│   ├── ClaimedByMe.test.js
+│   ├── ClaimLink.js
+│   ├── ClaimPeriod.js
+│   ├── ClaimPeriod.test.js
+│   ├── index.css
+│   ├── index.js
+│   ├── MainMenu.js
+│   ├── Modal.js
+│   ├── NextWindow.js
+│   ├── NextWindow.test.js
+│   ├── ParticleCanvas.js
+│   ├── ReportAbsence.js
+│   ├── ReportAbsence.test.js
+│   ├── Settings.js
+│   └── utils/
+│       ├── buttonArrows.js
+│       ├── buttonLights.js
+│       ├── date.js
+│       ├── faculty.js
+│       ├── fetch.js
+│       ├── period.js
+│       ├── settings.js
+│       ├── xlsx.js
+│       └── ...
+└── tools/
+    └── insert-jsdoc.js
 ```
 
 ---
 
 ## 🧪 Testing
 
-[Describe your testing approach]
+Unit + integration tests use Jest with React Testing Library. Tests mock network calls and the XLSX helper functions; configuration is in jest.config.js, and test scripts are in package.json.
 
 ```bash
 # Run tests
@@ -201,6 +186,9 @@ npm test
 
 # Run tests with coverage
 npm test -- --coverage
+
+# Run tests in watch mode
+npm test -- --watchAll
 ```
 
 ---
@@ -215,31 +203,26 @@ npm test -- --coverage
 
 ---
 
-## 📸 Screenshots
+## 📸 Video Demo
 
-[Add screenshots of your application once developed]
-
-### Home Page
-![Home Page](./screenshots/home.png)
-
-### [Feature Name]
-![Feature](./screenshots/feature.png)
+Full-Length Video: https://youtu.be/IwVt9URoGRQ
+Rapid Demo Video: https://youtu.be/df1khpN26p0
 
 ---
 
 ## 🎓 Reflections & Learnings
 
 ### What I Learned
-[Reflect on what you learned throughout this project]
+I learned how to integrate an npm application with Google Apps Script and Sheets APIs. I included a robust XLSX parsing system and added row handling inside of fetchAndParseXLSX. I normalized and handled class periods and time logic using parsePeriods and UTC date checks in date.js. I polished UI and UX with button effects. I also added app routing and auth flow in App.js.
 
 ### Challenges Faced
-[Discuss significant challenges and how you overcame them]
+Parsing XLSX reliably with sheet indexing was difficult and required my own research into connecting Google Sheets with an app. I fixed this using iterative parsing in fetchAndParseXLSX. I handled timezone and date edge cases, which required thoughtful consideration for advance/cancellation windows using UTC-normalized checks. I created file uploads and connected them to form submission using an Apps Script endpoint, and I ensured CORS and format correctness in ReportAbsence.js. The CORS header took me a while to fix, but I did more research on Google and found a solution.
 
 ### GitHub Copilot Experience
-[Discuss how GitHub Copilot helped or hindered your development process. Provide specific examples.]
+GitHub Copilot accelerated documentation and assisted in bug-fixing with CORS headers and parsing XLSX. It also helped me build my ideal UI from a long prompt I provided with a detailed description of each screen. I included follow-up discussions after each long prompt to improve each part and screen specifically. I verified that the generated suggestions match real endpoints and were not made up. I saved time on developing the boilerplate for the app, but it still required my manual (human) review for accuracy.
 
 ### Future Improvements
-[What would you do differently or add if you had more time?]
+I would add more unit and integration tests for XLSX parsing and claiming periods. I will extract common network and email logic into a service and add retry buttons and error notices (or potential reasons why things error) for the user. I can integrate the application with Microsoft Calendar directly in the future. I will also create a virtual phone number to send SMS notifications to users. I can also add different theming options for the users to customize the application.
 
 ---
 
@@ -247,8 +230,9 @@ npm test -- --coverage
 
 - [React Documentation](https://react.dev)
 - [GitHub Copilot Documentation](https://docs.github.com/copilot)
-- [Other resource]
-- [Other resource]
+- [Webpack Docs](https://webpack.js.org)
+- [Jest Docs](https://jestjs.io)
+- [Google Apps Script](https://developers.google.com/apps-script)
 
 ---
 
@@ -389,32 +373,6 @@ npm test -- --coverage
 5. Challenges faced and how you overcame them
 6. What you learned and future improvements
 
----
-
-# 💡 Tips for Success
-
-## GitHub Best Practices
-- ✅ Commit regularly with clear, descriptive messages
-- ✅ Use branches for new features
-- ✅ Write a comprehensive README with setup instructions
-- ✅ Include a .gitignore file to exclude node_modules and sensitive data
-- ✅ Use meaningful branch names (feature/user-auth, bugfix/login-error)
-
-## Working with GitHub Copilot
-- ✅ Always review and understand suggested code before accepting
-- ✅ Use comments to guide Copilot toward desired solutions
-- ✅ Test all code thoroughly, especially AI-generated suggestions
-- ✅ Modify suggestions to match your project's style and needs
-- ✅ Document interesting or non-obvious code sections
-- ⚠️ Don't blindly accept suggestions - understand what the code does
-- ⚠️ Be aware of potential security issues in generated code
-
-## Time Management
-- ⏰ Start early and work consistently
-- ⏰ Build incrementally - get one feature working before moving to the next
-- ⏰ Test frequently to catch issues early
-- ⏰ Leave time for polish and deployment
-- ⏰ Ask for help when stuck - don't wait until the last minute
 
 ## Code Quality
 - 📝 Write clean, readable code
@@ -423,48 +381,3 @@ npm test -- --coverage
 - 📝 Extract reusable logic into custom hooks
 - 📝 Handle errors gracefully
 - 📝 Add loading states for async operations
-
----
-
-# 🔗 Helpful Resources
-
-## React
-- [React Official Documentation](https://react.dev)
-- [React Hooks Documentation](https://react.dev/reference/react)
-- [React Router Documentation](https://reactrouter.com)
-
-## GitHub Copilot
-- [GitHub Copilot Documentation](https://docs.github.com/copilot)
-- [Getting Started with Copilot](https://docs.github.com/copilot/getting-started-with-github-copilot)
-
-## Deployment Platforms
-- [Vercel](https://vercel.com)
-- [Netlify](https://netlify.com)
-- [GitHub Pages](https://pages.github.com)
-- [Render](https://render.com)
-
-## UI Libraries & Styling
-- [Tailwind CSS](https://tailwindcss.com)
-- [Material-UI](https://mui.com)
-- [Chakra UI](https://chakra-ui.com)
-- [React Bootstrap](https://react-bootstrap.github.io)
-
-## Additional Tools
-- [Axios](https://axios-http.com) - HTTP client
-- [React Query](https://tanstack.com/query) - Data fetching
-- [Zustand](https://zustand-demo.pmnd.rs) - State management
-- [React Hook Form](https://react-hook-form.com) - Form handling
-
----
-
-## 📞 Getting Help
-
-If you encounter issues:
-1. Check the documentation for the library/tool you're using
-2. Search Stack Overflow for similar problems
-3. Ask GitHub Copilot for suggestions (but verify the code!)
-4. Discuss with classmates (collaboration is encouraged!)
-
----
-
-**Good luck with your project! 🚀**
